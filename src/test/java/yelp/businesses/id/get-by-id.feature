@@ -8,7 +8,7 @@ Feature: This endpoint returns detailed business content. Normally, you would ge
     * url 'https://'+host+'/v3/businesses'
     * header Authorization = 'Bearer '+apiKey
 
-  Scenario: Get business by business id
+  Scenario: Get business by business id, verify response code
     * def result = call read('classpath:yelp/reuse/get-business-id.feature') {term: 'italian', latitude: 40.730610, longitude: -73.935242}
     * def response = result.response
     * def firstItem = get[0] response.businesses
@@ -25,6 +25,29 @@ Feature: This endpoint returns detailed business content. Normally, you would ge
     Given path id
     When method get
     Then status 200
+    Then match response ==
+    """
+     {
+        "id": "#string",
+        "alias": "#string",
+        "name": "#string",
+        "image_url": "#string",
+        "is_claimed":  #  boolean,
+        "is_closed":  #  boolean,
+        "url": "#string",
+        "phone": "#string",
+        "display_phone": "#string",
+        "review_count":  #  number,
+        "categories":  #  array,
+        "rating":  #  number,
+        "location":  #  object,
+        "coordinates":  #  object,
+        "photos":  #  array,
+        "price": "#string",
+        "hours":  #  array,
+        "transactions":  #  array
+    }
+    """
     Examples:
       | term       | latitude  | longitude  | location      |
       | mexican    | 40.730610 | -73.935242 | New York City |

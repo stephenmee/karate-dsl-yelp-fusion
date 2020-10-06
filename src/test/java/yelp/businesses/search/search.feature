@@ -23,22 +23,6 @@ Feature: This endpoint returns up to 1000 businesses based on the provided searc
     * def firstItem = get[0] response.businesses
     * def id = firstItem.id
     * print id
-#    * def firstItem = get[0] response.businesses
-#    * def id = firstItem.id
-#    * print id
-#    And def firstToken = response.response.data.posts.lastToken
-#    And def result = call read('classpath:feeds/reuse/get-last-token-pass-token.feature') {lastToken: '#(firstToken)'}
-#    Then match result.response.data.posts.lastToken != firstToken
-#    * print result
-#    * def result = call read('called-normal.feature') { name: 'Nyan', age: 10 }
-##    New York City
-#    And param latitude = '40.730610'
-#    And param longitude = '-73.935242'
-#    When method get
-#    * def firstItem = get[0] response.businesses
-#    * def id = firstItem.id
-#    * print id
-#    Then status 200
 
   Scenario Outline: verify businesses array, total number, longitude/latitude in response
     Given param term = '<term>'

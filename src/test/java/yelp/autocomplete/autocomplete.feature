@@ -16,7 +16,7 @@ Feature: Provide autocomplete suggestions for businesses, search keywords and ca
   Scenario: verify categories, businesses and terms array in response
     Given param text = 'del'
     And param latitude = '37.786942'
-    And param longitude = '122.399643'
+    And param longitude = '-122.399643'
     When method get
     Then match response ==
     """
